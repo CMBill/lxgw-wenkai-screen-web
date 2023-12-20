@@ -17,7 +17,7 @@ jobs:
         id: down
         uses: robinraju/release-downloader@v1.8
         with:
-          repository: lxgw/LxgwWenKaiLxgwWenKai-Screen
+          repository: lxgw/LxgwWenKai-Screen
           latest: true
           # tag: "${{ steps.tagname.outputs.tagname }}"
           out-file-path: "tmp"
