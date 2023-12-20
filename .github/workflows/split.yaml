@@ -1,0 +1,52 @@
+name: Split Fonts
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: get the fonts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4.0.1
+        with: 
+          node-version: '>=18.0.0'
+
+      - name: Download fonts
+        id: down
+        uses: robinraju/release-downloader@v1.8
+        with:
+          repository: lxgw/LxgwWenKaiLxgwWenKai-Screen
+          latest: true
+          # tag: "${{ steps.tagname.outputs.tagname }}"
+          out-file-path: "tmp"
+
+      - name: Split fonts
+        run: |
+          npm install cn-font-split -g
+          rm -rf ./fonts/
+          rm -rf ./style.css
+          for i in $(echo "$(ls ./tmp)" | grep -i '\.ttf$')
+          do 
+            font_name=$(echo "$i" | sed -E 's/(.+)\.ttf$/\1/i' | tr '[:upper:]' '[:lower:]')
+            cn-font-split -i=./tmp/$i -o=./fonts/$font_name --renameOutputFont='[index][ext]'
+            echo "@import url('./fonts/$font_name/result.css');" >> ./style.css
+          done
+          echo "${{ steps.down.outputs.tag_name }}" >> ./VERSION
+          rm -rf ./tmp/
+
+      - name: Commit files
+        run: |
+          git config --global user.email github-actions[bot]@users.noreply.github.com
+          git config --global user.name github-actions[bot]
+          git status
+          git add . 
+          git commit -m "update ${{ steps.down.outputs.tag_name }}" -a
+          git tag ${{ steps.down.outputs.tag_name }}
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with: 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tags: true
