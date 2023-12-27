@@ -19,7 +19,7 @@
 | -------------------------- | ---------------------------- | ------------- |
 | LXGW WenKai Screen         | `LXGW WenKai Screen`         | `normal`      |
 | LXGW WenKai Screen R       | `LXGW WenKai Screen R`       | `normal`      |
-| LXGW WenKai Gb Screen      | `LXGW WenKai GB Screen`      | `normal`      |
+| LXGW WenKai GB Screen      | `LXGW WenKai GB Screen`      | `normal`      |
 | LXGW WenKai GB Screen R    | `LXGW WenKai GB Screen R`    | `normal`      |
 | LXGW WenKai Mono Screen    | `LXGW WenKai Mono Screen`    | `normal`      |
 | LXGW WenKai Mono GB Screen | `LXGW WenKai Mono GB Screen` | `normal`      |
