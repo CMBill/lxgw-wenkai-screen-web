@@ -13,6 +13,35 @@
 为方便使用，本仓库的版本号将与字体原仓库版本号一致。目前只提供了 `v1.315` 及之后的版本。
 
 ## 使用
+仓库包含如下字体，以表格中所示 `font-family` 与 `font-weight` 在 CSS 中调用即可。
+
+| 字体                       | `font-family`                | `font-weight` |
+| -------------------------- | ---------------------------- | ------------- |
+| LXGW WenKai Screen         | `LXGW WenKai Screen`         | `normal`      |
+| LXGW WenKai Screen R       | `LXGW WenKai Screen R`       | `normal`      |
+| LXGW WenKai Gb Screen      | `LXGW WenKai GB Screen`      | `normal`      |
+| LXGW WenKai GB Screen R    | `LXGW WenKai GB Screen R`    | `normal`      |
+| LXGW WenKai Mono Screen    | `LXGW WenKai Mono Screen`    | `normal`      |
+| LXGW WenKai Mono GB Screen | `LXGW WenKai Mono GB Screen` | `normal`      |
+
+直接将文后提供的链接以 `<link>` 的形式添加到网页的 `<head>` 内即可，这样可以调用上述所有字体及变体，但是只会加载实际使用的字体所在分包文件，如：
+```html
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/CMBill/lxgw-wenkai-screen-web/style.css" />
+  <style>
+    body {
+      font-family: "LXGW WenKai Screen";
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+</html>
+```
+
 ### 自行部署
 如果下方提供的链接连接效果不甚理想，建议自行部署并配合自己的 CDN 使用。可以直接 Fork 本仓库并启用 Github Pages，使用时将下方链接修改为自己的仓库地址即可，亦可直接克隆本仓库到服务端、对象存储等。
 
