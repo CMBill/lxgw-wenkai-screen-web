@@ -1,6 +1,6 @@
 {
     "name": "lxgw-wenkai-screen-web",
-    "version": "1.315.0",
+    "version": "1.315.1",
     "description": "Web font package for LXGW WenKai Screen",
     "main": "style.css",
     "style": "style.css",
