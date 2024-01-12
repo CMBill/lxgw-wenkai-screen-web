@@ -56,7 +56,7 @@
 
 例如若只需调用 LXGW WenKai Mono Screen，则只需引入：
 ```
-https://cdn.jsdelivr.net/gh/CMBill/lxgw-wenkai-web/fonts/lxgwwenkaimonoscreen/result.css
+https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/fonts/lxgwwenkaimonoscreen/result.css
 ``` 
 
 ### 自行部署
