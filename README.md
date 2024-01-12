@@ -64,7 +64,7 @@ https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/fonts/lxgwwenkaimonoscreen/r
 
 ### 使用 CDN
 #### 作为 npm 包
-目前已作为 npm 包上传到 npmjs，可以使用 npm 包的镜像引用
+目前已作为 npm 包上传到 npmjs，可以使用 npm 包的镜像引用，如 JsDelivr 的 npm 镜像：
 
 ```
 https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css
