@@ -19,7 +19,6 @@ jobs:
         with:
           repository: lxgw/LxgwWenKai-Screen
           latest: true
-          # tag: "${{ steps.tagname.outputs.tagname }}"
           out-file-path: "tmp"
 
       - name: Split fonts
@@ -27,26 +26,40 @@ jobs:
           npm install cn-font-split -g
           rm -rf ./fonts/
           rm -rf ./style.css
+          rm -rf ./VERSION
           for i in $(echo "$(ls ./tmp)" | grep -i '\.ttf$')
           do 
             font_name=$(echo "$i" | sed -E 's/(.+)\.ttf$/\1/i' | tr '[:upper:]' '[:lower:]')
             cn-font-split -i=./tmp/$i -o=./fonts/$font_name --renameOutputFont='[index][ext]'
-            echo "@import url('./fonts/$font_name/result.css');" >> ./style.css
+            echo "@import url('./$font_name/result.css');" >> ./style.css
           done
-          echo "${{ steps.down.outputs.tag_name }}" >> ./VERSION
+          echo "${{ steps.down.outputs.tag_name }}" >> VERSION
+          mv VERSION fonts/VERSION
+          mv style.css fonts/style.css
+          
           rm -rf ./tmp/
+
+      - name: Auto Minify
+        uses: nizarmah/auto-minify@v2.1.1
 
       - name: Commit files
         run: |
-          git config --global user.email github-actions[bot]@users.noreply.github.com
-          git config --global user.name github-actions[bot]
+          # mv style.min.css fonts/style.min.css
+          cd fonts || exit 1
+          git init
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git config user.name github-actions[bot]
+          git checkout -b latest
           git status
           git add . 
           git commit -m "update ${{ steps.down.outputs.tag_name }}" -a
           git tag ${{ steps.down.outputs.tag_name }}
-          
+
       - name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v0.8.0
         with: 
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
           tags: true
+          directory: fonts
+          branch: latest
