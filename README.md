@@ -47,16 +47,16 @@
 
 | 字体                       | 链接                                                            |
 | -------------------------- | --------------------------------------------------------------- |
-| LXGW WenKai Screen         | `https://repositoryURL/fonts/lxgwwenkaiscreen/result.css`       |
-| LXGW Wenkai Screen R       | `https://repositoryURL/fonts/lxgwwenkaiscreenr/result.css`      |
-| LXGW Wenkai GB Screen      | `https://repositoryURL/fonts/lxgwwenkaigbscreen/result.css`     |
-| LXGW WenKai GB Screen R    | `https://repositoryURL/fonts/lxgwwenkaigbscreenr/result.css`    |
-| LXGW WenKai Mono Screen    | `https://repositoryURL/fonts/lxgwwenkaimonoscreen/result.css`   |
-| LXGW WenKai Mono GB Screen | `https://repositoryURL/fonts/lxgwwenkaimonogbscreen/result.css` | 
+| LXGW WenKai Screen         | `https://repositoryURL/lxgwwenkaiscreen/result.css`       |
+| LXGW Wenkai Screen R       | `https://repositoryURL/lxgwwenkaiscreenr/result.css`      |
+| LXGW Wenkai GB Screen      | `https://repositoryURL/lxgwwenkaigbscreen/result.css`     |
+| LXGW WenKai GB Screen R    | `https://repositoryURL/lxgwwenkaigbscreenr/result.css`    |
+| LXGW WenKai Mono Screen    | `https://repositoryURL/lxgwwenkaimonoscreen/result.css`   |
+| LXGW WenKai Mono GB Screen | `https://repositoryURL/lxgwwenkaimonogbscreen/result.css` | 
 
 例如若只需调用 LXGW WenKai Mono Screen，则只需引入：
 ```
-https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/fonts/lxgwwenkaimonoscreen/result.css
+https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/lxgwwenkaimonoscreen/result.css
 ``` 
 
 ### 自行部署
