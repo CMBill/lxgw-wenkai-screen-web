@@ -59,10 +59,30 @@
 https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/lxgwwenkaimonoscreen/result.css
 ``` 
 
-### 自行部署
-如果下方提供的链接连接效果不甚理想，建议自行部署并配合自己的 CDN 使用。可以直接 Fork 本仓库并启用 Github Pages，使用时将下方链接修改为自己的仓库地址即可，亦可直接克隆本仓库到服务端、对象存储等。
+### 使用 npmmirror（推荐）
+阿里提供的 npm 镜像
 
-### 使用 CDN
+使用方法：获取文件内容 /${pkg}/${versionOrTag}/files/${path}
+
+如： `https://registry.npmmirror.com/lxgw-wenkai-screen-web/latest/files/style.css`
+
+如果想获取特定版本，只需将 `latest` 修改为特定的 npm 包版本号，如
+
+`https://registry.npmmirror.com/lxgw-wenkai-screen-web/1.321.0/files/style.css`
+
+
+### 使用公益镜像
+渺软公益 CDN
+
+回源 jsDelivr，参考jsDelivr：`https://jsd.onmicrosoft.cn/npm/lxgw-wenkai-screen-web/style.css`
+
+回源 UNPKG，参考UNPKG：`https://npm.onmicrosoft.cn/lxgw-wenkai-screen-web/style.css`
+
+
+### 自行部署
+可以直接 Fork 本仓库并启用 Github Pages，使用时将下方链接修改为自己的仓库地址即可，亦可直接克隆本仓库到服务端、对象存储等。
+
+### 使用 JsDelivr CDN
 #### 作为 npm 包
 目前已作为 npm 包上传到 npmjs，可以使用 npm 包的镜像引用，如 JsDelivr 的 npm 镜像：
 
