@@ -64,11 +64,11 @@ https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/lxgwwenkaimonoscreen/result.
 
 使用方法：获取文件内容 /${pkg}/${versionOrTag}/files/${path}
 
-如： `https://registry.npmmirror.com/lxgw-wenkai-screen-web/1.321.0/files/style.css`
+如： `https://registry.npmmirror.com/lxgw-wenkai-screen-web/latest/files/style.css`
 
-如果想保持最新版则将版本号改成 `latest`
+如果想获取特定版本，只需将 `latest` 修改为特定的 npm 包版本号，如
 
-`https://registry.npmmirror.com/lxgw-wenkai-screen-web/latest/files/style.css`
+`https://registry.npmmirror.com/lxgw-wenkai-screen-web/1.321.0/files/style.css`
 
 
 ### 使用公益镜像
