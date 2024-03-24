@@ -5,6 +5,9 @@
 >   - [霞鹜文楷 GB / LXGW WenKai GB](https://github.com/CMBill/lxgw-wenkai-gb-web)：调整字形和笔形，符合 G 源字形规范。包含《通用规范汉字表》8105 个汉字。
 >   - [霞鹜文楷 TC / LXGW WenKai TC](https://github.com/CMBill/lxgw-wenkai-tc-web)：繁体中文版。
 
+[![NPM Version](https://img.shields.io/npm/v/lxgw-wenkai-screen-web?style=flat-square)](https://www.npmjs.com/package/lxgw-wenkai-screen-web)
+[![](https://data.jsdelivr.com/v1/package/npm/lxgw-wenkai-screen-web/badge?style=rounded)](https://www.jsdelivr.com/package/npm/lxgw-wenkai-screen-web)
+
 ## 简介
 [LXGW WenKai Screen / 霞鹜文楷屏幕阅读版](https://github.com/lxgw/LxgwWenKai-Screen) 是 [霞鹜文楷](https://github.com/lxgw/LxgwWenKai) 的屏幕舒适阅读版本，更适合 PC 及 Android 手机屏幕显示。字体详情请参阅原字体仓库。
 
