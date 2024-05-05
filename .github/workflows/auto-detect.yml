@@ -74,6 +74,5 @@ jobs:
       env:
         PARENT_REPO: ${{ github.repository }}
         PARENT_BRANCH: main
-        WORKFLOW_ID: target_workflow_id
       run: |
         curl -fL --retry 3 -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.PERSONAL_TOKEN }}" https://api.github.com/repos/${{ env.PARENT_REPO }}/actions/workflows/split.yaml/dispatches -d '{"ref":"${{ env.PARENT_BRANCH }}"}'
