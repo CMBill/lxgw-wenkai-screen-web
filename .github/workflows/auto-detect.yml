@@ -1,0 +1,79 @@
+name: Detect Fonts Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 每个星期一零点检查（UTC 时间）
+    - cron: "0 0 * * 1"
+
+jobs:
+  check-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 获取 lxgw/LxgwWenKai 仓库最新 tag
+        id: get-lxgw-tag
+        run: |
+          echo "tag_name=$(curl -s https://api.github.com/repos/lxgw/LxgwWenKai-Screen/releases/latest | jq -r '.tag_name')" >> $GITHUB_OUTPUT
+
+      - name: 获取 CMBill/lxgw-wenkai-web 仓库 tags 最新的 tag
+        id: get-self-tag
+        run: |
+          echo "tag_name=$(curl -s https://api.github.com/repos/CMBill/lxgw-wenkai-screen-web/tags | jq -r '.[0].name')" >> $GITHUB_OUTPUT
+
+      - name: 比较版本号
+        id: version-compare
+        run: |
+          lxgw_tag=${{ steps.get-lxgw-tag.outputs.tag_name }}
+          self_tag=${{ steps.get-self-tag.outputs.tag_name }}
+          lxgw_tag_stripped=${lxgw_tag#v}
+          self_tag_stripped=${self_tag#v}
+
+          python3 <<END
+          import re
+          import os
+
+          def parse_version(version_str):
+              match = re.match(r'(\d+)\.?(\d+)?\.?(\d+)?', version_str)
+              if match:
+                  major = int(match.group(1)) if match.group(1) else 0
+                  minor = int(match.group(2)) if match.group(2) else 0
+                  patch = int(match.group(3)) if match.group(3) else 0
+                  return [major, minor, patch]
+              else:
+                  return []
+
+          lxgw_version = parse_version("$lxgw_tag_stripped")
+          self_version = parse_version("$self_tag_stripped")
+
+          print(f"lxgw_version: {lxgw_version}")
+          print(f"self_version: {self_version}")
+
+          if lxgw_version > self_version:
+              print("lxgw_newer=true")
+              # os.environ['lxgw_newer'] = 'true'
+              os.system('echo "lxgw_newer=true" >> $GITHUB_ENV')
+          else:
+              print("lxgw_newer=false")
+              # os.environ['lxgw_newer'] = 'false'
+              os.system('echo "lxgw_newer=false" >> $GITHUB_ENV')
+          END
+
+          echo "${{ env.lxgw_newer }}"
+    outputs:
+      lxgw_newer: ${{ env.lxgw_newer }}
+
+  update:
+    runs-on: ubuntu-latest
+    needs: check-update
+    if: ${{ needs.check-update.outputs.lxgw_newer == 'true' }}
+    steps:
+    - name: Github REST API Call
+      env:
+        PARENT_REPO: ${{ github.repository }}
+        PARENT_BRANCH: main
+        WORKFLOW_ID: target_workflow_id
+      run: |
+        curl -fL --retry 3 -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.PERSONAL_TOKEN }}" https://api.github.com/repos/${{ env.PARENT_REPO }}/actions/workflows/split.yaml/dispatches -d '{"ref":"${{ env.PARENT_BRANCH }}"}'
