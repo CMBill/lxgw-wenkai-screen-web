@@ -83,7 +83,7 @@ https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/lxgwwenkaimonoscreen/result.
 
 
 ### 自行部署
-可以直接 Fork 本仓库并启用 Github Pages，使用时将下方链接修改为自己的仓库地址即可，亦可直接克隆本仓库到服务端、对象存储等。
+可以直接克隆本仓库到服务端、对象存储等。
 
 ### 使用 JsDelivr CDN
 #### 作为 npm 包
@@ -104,12 +104,3 @@ https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web@VERSION/style.css
 https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web@1.315/style.css
 ```
 
-#### 使用 JsDelivr 对 GitHub 仓库的 CDN
-```
-https://cdn.jsdelivr.net/gh/CMBill/lxgw-wenkai-screen-web/style.css
-```
-
-也可指定版本号，将链接中的 `$VERSION` 替换为目标版本号，如 `1.315` 或 `v1.315` 均可。目前仅只提供 `v1.315` 之后的版本。
-```
-https://cdn.jsdelivr.net/gh/CMBill/lxgw-wenkai-screen-web@VERSION/style.css
-```
