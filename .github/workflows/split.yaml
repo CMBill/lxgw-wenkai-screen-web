@@ -3,17 +3,21 @@ name: Split Fonts
 on:
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: write
+
 jobs:
   build:
     name: get the fonts
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    # permissions:
+    #   contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4.0.1
+      - uses: actions/setup-node@v4
         with: 
-          node-version: '>=18.0.0'
+          node-version: '24'
           registry-url: https://registry.npmjs.org
 
       - name: Download fonts
@@ -79,5 +83,5 @@ jobs:
       - run: |
           cd fonts
           npm publish
-        env: 
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        # env: 
+        #   NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
